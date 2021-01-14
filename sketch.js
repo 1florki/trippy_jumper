@@ -62,7 +62,7 @@ function setupGame() {
   spikes = [];
   let x = -width / 2;
   for(let i = 0; i < 8; i++) {
-    x += 100 + random(200);
+    x += 100 * s + random(200 * s);
     spikes.push(new Triangle({x: x, y: ground, size: 8 * s}))
   }
   player = new Triangle({x: 0, y: ground, size: 8 * s})
