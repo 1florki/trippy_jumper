@@ -61,7 +61,7 @@ function setupGame() {
   
   spikes = [];
   let x = -width / 2;
-  for(let i = 0; i < 5; i++) {
+  for(let i = 0; i < 8; i++) {
     x += 100 + random(200);
     spikes.push(new Triangle({x: x, y: ground, size: 8 * s}))
   }
@@ -94,10 +94,10 @@ function draw() {
       fill(0, 0, 256);
       man.draw(text, "game over", 0, ground - 10 * s)
     }
-    fill(noise((t.pos.x + allTime) * 0.001) * 400 % 256, 256, 256);
+    fill(noise((t.pos.x + allTime) * 0.001 * s) * 400 % 256, 256, 256);
     t.draw();
     if(t.pos.x < -width) {
-      t.pos.x = width + random(100);
+      t.pos.x = width + random(100 * s);
     }
   }
   fill(0, 0, 256);
@@ -118,7 +118,7 @@ function draw() {
   strokeWeight(0.4)
   for(let i = 0; i < 25; i++) {
     let x = (width / 12.5) * i - width;
-    stroke(noise((x + allTime) * 0.001) * 400 % 256, 256, 256);
+    stroke(noise((x + allTime) * 0.001 * s) * 400 % 256, 256, 256);
     man.line(x, ground + player.size, x + width / 12.5, ground + player.size);
   }
   rotate(-allTime * 0.02)
